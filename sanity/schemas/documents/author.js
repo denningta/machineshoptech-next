@@ -18,6 +18,12 @@ export default {
       },
     },
     {
+      name: 'workTitle',
+      title: 'Work Title',
+      description: 'Example: CEO',
+      type: 'string'
+    },
+    {
       name: 'image',
       title: 'Image',
       type: 'image',

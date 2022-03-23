@@ -11,13 +11,20 @@ const hiddenDocTypes = listItem => ![
     'route',
     'navItem',
     'socialConnection',
-    'landingPage',
-    'callToAction',
-    'service',
-    'footer',
     'post',
     'author',
     'category',
+    'ctaSection',
+    'featureList',
+    'featureSummary',
+    'footer',
+    'hero',
+    'logoCloud',
+    'metrics',
+    'team',
+    'testimonial',
+    'landingPage',
+    'callToAction'
   ].includes(listItem.getId())
 
 export default () =>

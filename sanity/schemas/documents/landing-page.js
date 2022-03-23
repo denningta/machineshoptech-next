@@ -1,48 +1,66 @@
 export default {
   title: 'Landing Page',
-  
   name: 'landingPage',
   type: 'document',
   fields: [
     {
-      name: 'pageName',
-      title: 'Page Name',
+      name: 'internalTitle',
+      title: 'Internal Title',
       description: 'Name the page.  Not visible to the outside world.',
       type: 'string'
     },
     {
-      name: 'description',
-      title: 'Description',
+      name: 'internalDescription',
+      title: 'Internal Description',
       description: 'Describe the purpose of the page.  Not visible to the outside world.',
       type: 'string',
     },
     {
       name: 'route',
       title: 'Route',
-      description: 'Intended route of the page',
+      description: 'Intended route of the page.  "root" is a reserved keyword for the root of the domain.',
+      type: 'slug',
+      options: {
+        source: 'internalTitle'
+      }
+    },
+    {
+      name: 'header',
+      title: 'Header',
+      description: 'Select the header to display at the top of this page',
       type: 'reference',
-      to: [{type: 'route'}]
+      to: [
+        {type: 'hero'},
+        {type: 'ctaSection'}
+      ]
     },
     {
-      name: 'headline',
-      title: 'Headline',
-      description: 'The marketing headline.',
-      type: 'string',
-      validation: Rule => Rule.max(100).warning(`The headline should not have more than 100 characters.`)
+      name: 'sections',
+      title: 'Sections',
+      description: 'Select and arrange sections in the order they should appear',
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [
+          {type: 'hero'},
+          {type: 'featureList'},
+          {type: 'featureSummary'},
+          {type: 'footer'},
+          {type: 'logoCloud'},
+          {type: 'team'},
+          {type: 'metrics'},
+          {type: 'ctaSection'},
+        ]
+      }]
     },
     {
-      name: 'subHeadline',
-      title: 'subHeadline',
-      description: 'The marketing sub-headline.',
-      type: 'string',
-      validation: Rule => Rule.max(200).warning(`The headline should not have more than 200 characters.`)
-    },
-    {
-      name: 'callToAction',
-      title: 'Call-to-Action',
-      description: 'Assign a call-to-action',
+      name: 'footer',
+      title: 'Footer',
+      description: 'Select the footer to display at the bottom of the page',
       type: 'reference',
-      to: [{type: 'callToAction'}]
+      to: [
+        {type: 'footer'}
+      ]
     },
     {
       name: 'navItems',
@@ -55,25 +73,6 @@ export default {
           to: [{type: 'navItem'}]
         }
       ]
-    },
-    {
-      name: 'services',
-      title: 'Services',
-      description: 'Add the services that should be displayed on this page.',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{type: 'service'}]
-        }
-      ],
-    }, 
-    {
-      name: 'footer',
-      title: 'Footer',
-      description: 'Choose the footer to display on this landing page',
-      type: 'reference',
-      to: [{type: 'footer'}]
     }
   ]
 }

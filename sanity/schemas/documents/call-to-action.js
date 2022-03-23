@@ -36,15 +36,10 @@ export default {
       }
     },
     {
-      name: 'route',
-      title: 'Route',
-      description: 'Select the route or blog post to navigate to when this CTA is clicked.',
-      type: 'reference',
-      to: [
-        {type: 'route'},
-        {type: 'post'}
-      ]
-    },
-
+      name: 'pageLink',
+      title: 'Link to Page',
+      description: 'Create a link to a page',
+      type: 'pageLink'
+    }
   ]
 }
