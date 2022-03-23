@@ -26,7 +26,10 @@ export default {
       title: 'Call-to-Action',
       description: 'Create a primary and/or secondary CTA for this section',
       type: 'array',
-      of: [{type: 'callToAction'}],
+      of: [{
+        type: 'reference',
+        to: [{type: 'callToAction'}]
+      }],
       validation: Rule => Rule.max(2)
     }
   ]

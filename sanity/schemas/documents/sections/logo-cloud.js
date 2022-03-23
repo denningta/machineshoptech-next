@@ -28,6 +28,11 @@ export default {
               name: 'logo',
               title: 'Company logo',
               type: 'image'
+            },
+            {
+              name: 'icon',
+              title: 'Icon',
+              type: 'iconPicker'
             }
           ]
         }

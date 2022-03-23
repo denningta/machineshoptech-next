@@ -28,6 +28,7 @@ import metrics from './documents/sections/metrics';
 import testimonial from './documents/sections/testimonial';
 import logoCloud from './documents/sections/logo-cloud';
 import team from './documents/sections/team';
+import postList from './documents/sections/post-list';
 
 
 
@@ -57,6 +58,7 @@ export default createSchema({
     testimonial,
     logoCloud,
     team,
+    postList,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

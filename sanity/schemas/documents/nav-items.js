@@ -21,7 +21,10 @@ export default {
       title: 'Route',
       description: 'When the nav item is clicked, where should the user be sent?',
       type: 'reference',
-      to: [{type: 'route'}]
+      to: [
+        {type: 'landingPage'},
+        {type: 'post'}
+      ]
     }
   ]
 }

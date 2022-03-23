@@ -1,6 +1,6 @@
 import S from '@sanity/desk-tool/structure-builder';
 import siteSettings from './siteSettings';
-import marketingSite from './marketingSite';
+import marketingSite from './marketing-site/marketingSite';
 import blog from './blog/blog';
 
 // React-icon https://react-icons.github.io/react-icons
@@ -24,7 +24,8 @@ const hiddenDocTypes = listItem => ![
     'team',
     'testimonial',
     'landingPage',
-    'callToAction'
+    'callToAction',
+    'postList'
   ].includes(listItem.getId())
 
 export default () =>

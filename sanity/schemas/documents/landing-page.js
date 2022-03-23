@@ -16,8 +16,8 @@ export default {
       type: 'string',
     },
     {
-      name: 'route',
-      title: 'Route',
+      name: 'slug',
+      title: 'Url Slug',
       description: 'Intended route of the page.  "root" is a reserved keyword for the root of the domain.',
       type: 'slug',
       options: {
@@ -42,14 +42,13 @@ export default {
       of: [{
         type: 'reference',
         to: [
-          {type: 'hero'},
           {type: 'featureList'},
           {type: 'featureSummary'},
-          {type: 'footer'},
           {type: 'logoCloud'},
           {type: 'team'},
           {type: 'metrics'},
           {type: 'ctaSection'},
+          {type: 'postList'},
         ]
       }]
     },

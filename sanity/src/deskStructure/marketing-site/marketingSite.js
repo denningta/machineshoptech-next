@@ -25,6 +25,7 @@ export default S.listItem().title('Marketing Site').icon(GoGlobe)
               S.listItem().title('Testimonial Section').child(S.documentTypeList('testimonial')),
               S.listItem().title('Logo Cloud').child(S.documentTypeList('logoCloud')),
               S.listItem().title('Team Section').child(S.documentTypeList('team')),
+              S.listItem().title('Blog Post List').child(S.documentTypeList('postList')),
               S.listItem().title('Footer').child(S.documentTypeList('footer')),
             ])
         ),
