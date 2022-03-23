@@ -22,9 +22,9 @@ export default S.listItem().title('Marketing Site').icon(GoGlobe)
               S.listItem().title('Feature List').child(S.documentTypeList('featureList')),
               S.listItem().title('CTA Section').child(S.documentTypeList('ctaSection')),
               S.listItem().title('Metrics Section').child(S.documentTypeList('metrics')),
-              S.listItem().title('Testimonial Section').child(S.documentTypeList('testimonial')),
               S.listItem().title('Logo Cloud').child(S.documentTypeList('logoCloud')),
               S.listItem().title('Team Section').child(S.documentTypeList('team')),
+              S.listItem().title('Testimonial Section').child(S.documentTypeList('testimonialSection')),
               S.listItem().title('Blog Post List').child(S.documentTypeList('postList')),
               S.listItem().title('Footer').child(S.documentTypeList('footer')),
             ])

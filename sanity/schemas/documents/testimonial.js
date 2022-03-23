@@ -18,7 +18,10 @@ export default {
     {
       name: 'avatar',
       title: 'Attestant Avatar',
-      type: 'image'
+      type: 'image',
+      options: {
+        hotspot: true
+      }
     },
     {
       name: 'testimonial',

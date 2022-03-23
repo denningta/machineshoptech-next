@@ -25,10 +25,11 @@ import hero from './documents/sections/hero';
 import featureList from './documents/sections/feature-list';
 import ctaSection from './documents/sections/cta-section';
 import metrics from './documents/sections/metrics';
-import testimonial from './documents/sections/testimonial';
+import testimonial from './documents/testimonial';
 import logoCloud from './documents/sections/logo-cloud';
 import team from './documents/sections/team';
 import postList from './documents/sections/post-list';
+import testimonialSection from './documents/sections/testimonial-section';
 
 
 
@@ -59,6 +60,7 @@ export default createSchema({
     logoCloud,
     team,
     postList,
+    testimonialSection,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
