@@ -1,12 +1,16 @@
-import type { NextPage } from 'next';
-import Header from './landing-page /header';
+import type { NextPage } from "next";
+import Layout from "../components/layout";
+import Button from "@mui/material/Button";
 
 const Home: NextPage = () => {
   return (
-    <div className='p-10'>
-      <Header />
-    </div>
-  )
-}
+    <>
+      <Layout>
+        <div>some stuff in here</div>
+        <Button variant="contained">Hello World</Button>
+      </Layout>
+    </>
+  );
+};
 
-export default Home
+export default Home;
