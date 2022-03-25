@@ -1,16 +1,32 @@
-import type { NextPage } from 'next';
+import type { InferGetStaticPropsType, NextPage } from 'next';
 import Layout from '../components/layout';
-import Button from '@mui/material/Button';
+import sanityClient from '../sanity/sanity-client';
+import { GetStaticProps } from 'next';
+import { LandingPage } from '../interfaces/sanity-schema';
 
-const Home: NextPage = () => {
+type LandingPageData = {
+  landingPageData: LandingPage;
+};
+
+const query = `*[_type == 'landingPage' && slug.current == 'root'][0]`;
+
+const Home: NextPage = ({
+  landingPageData,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Layout>
-        <div>some stuff in here</div>
-        <Button variant="contained">Hello World</Button>
+        <div>{landingPageData.internalTitle}</div>
       </Layout>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const landingPageData: LandingPageData = await sanityClient.fetch(query);
+  return {
+    props: { landingPageData },
+  };
 };
 
 export default Home;

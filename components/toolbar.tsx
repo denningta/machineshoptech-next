@@ -5,10 +5,16 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import { NavItem } from '../interfaces/sanity-schema';
+
+interface Props {
+  navItems: NavItem[];
+}
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default function Toolbar() {
+export default function Toolbar({ navItems }: Props) {
+  console.log(navItems);
   const [state, setState] = useState({
     right: false,
   });
@@ -48,9 +54,9 @@ export default function Toolbar() {
         PaperProps={{ className: 'bg-neutral-800 text-white' }}
       >
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} />
+          {navItems.map((navItem) => (
+            <ListItem button key={navItem.title}>
+              <ListItemText primary={navItem.title} />
             </ListItem>
           ))}
         </List>
