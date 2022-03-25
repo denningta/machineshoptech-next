@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import Layout from '../components/layout';
 import sanity from '../sanity/sanity-client';
 import { LandingPage } from '../interfaces/sanity-schema';
+import { landingPageQuery } from '../sanity/sanity-quries';
 import groq from 'groq';
 
 const landingPagesResult = groq`*[_type == 'landingPage'] { "slug": slug.current }`;
