@@ -13,8 +13,7 @@ interface Props {
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default function Toolbar({ navItems }: Props) {
-  console.log(navItems);
+export default function Toolbar() {
   const [state, setState] = useState({
     right: false,
   });
@@ -54,9 +53,9 @@ export default function Toolbar({ navItems }: Props) {
         PaperProps={{ className: 'bg-neutral-800 text-white' }}
       >
         <List>
-          {navItems.map((navItem) => (
-            <ListItem button key={navItem.title}>
-              <ListItemText primary={navItem.title} />
+          {['Home', 'Blog'].map((navItem) => (
+            <ListItem button key={navItem}>
+              <ListItemText primary={navItem} />
             </ListItem>
           ))}
         </List>

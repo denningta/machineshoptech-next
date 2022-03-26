@@ -6,10 +6,9 @@ interface Props {
 }
 
 export default function Layout({ landingPageData, children }: Props) {
-  console.log(landingPageData);
   return (
     <>
-      <Toolbar navItems={landingPageData.navItems} />
+      <Toolbar />
       <div id="main">{children}</div>
     </>
   );
