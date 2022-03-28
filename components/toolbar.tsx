@@ -3,17 +3,17 @@ import { FaBeer } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { NavItem } from '../interfaces/sanity-schema';
+import { NavItemGroq } from '../sanity/sanity-quries';
+import { ListItemButton } from '@mui/material';
 
 interface Props {
-  navItems: NavItem[];
+  navItems: NavItemGroq[];
 }
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default function Toolbar() {
+export default function Toolbar({ navItems }: Props) {
   const [state, setState] = useState({
     right: false,
   });
@@ -53,10 +53,14 @@ export default function Toolbar() {
         PaperProps={{ className: 'bg-neutral-800 text-white' }}
       >
         <List>
-          {['Home', 'Blog'].map((navItem) => (
-            <ListItem button key={navItem}>
-              <ListItemText primary={navItem} />
-            </ListItem>
+          {navItems.map((navItem) => (
+            <ListItemButton
+              key={navItem.title}
+              component="a"
+              href={navItem.route === 'root' ? '/' : navItem.route}
+            >
+              <ListItemText primary={navItem.title} />
+            </ListItemButton>
           ))}
         </List>
       </Drawer>
