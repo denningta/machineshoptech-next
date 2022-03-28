@@ -72,7 +72,7 @@ export type CtaSectionGroq = Omit<CtaSection, 'callToAction'> & {
 export type FeatureListGroq = FeatureList;
 
 export type FeatureSummaryGroq = Omit<FeatureSummary, 'callsToAction'> & {
-  callsToAction: CallToActionGroq[];
+  callToAction: CallToActionGroq;
 };
 
 export type LogoCloudGroq = LogoCloud;

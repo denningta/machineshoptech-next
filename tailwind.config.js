@@ -31,6 +31,19 @@ module.exports = {
         },
         secondary: {},
       },
+      margin: {
+        'global-sm': '1em',
+        'global-md': '2em',
+        'global-lg': '3em',
+      },
+      padding: {
+        'global-sm': '1em',
+        'global-md': '2em',
+        'global-lg': '3em',
+      },
+      maxWidth: {
+        'primary-col': '1256px',
+      },
     },
   },
   plugins: [],

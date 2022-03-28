@@ -52,11 +52,7 @@ function Sections({ sections }: Props) {
     }
   });
 
-  return (
-    <>
-      <div>{sectionsElements}</div>
-    </>
-  );
+  return <>{sectionsElements}</>;
 }
 
 export default Sections;

@@ -33,18 +33,27 @@ export default function Toolbar({ navItems }: Props) {
     };
 
   return (
-    <>
-      <div className="flex items-center p-4 border-b border-white border-opacity-10 text-xl">
+    <div className="fixed flex justify-center z-50 top-0 left-0 w-full h-[60px] bg-neutral-900 bg-opacity-60 backdrop-blur-sm border-b border-white border-opacity-10">
+      <div className="flex w-full items-center max-w-primary-col p-4 ">
         <div className="pr-3 text-2xl">
           <FaBeer />
         </div>
-        <div className="grow text-xl">Brandname</div>
+        <div className="text-xl">Brandname</div>
+        <div className="grow"></div>
         <div
-          className="text-2xl cursor-pointer"
+          className="text-2xl cursor-pointer sm:hidden"
           onClick={toggleDrawer('right', true)}
         >
           <GiHamburgerMenu />
         </div>
+        {navItems.map((navItem) => (
+          <div
+            className="text-md ml-4 hidden sm:flex cursor-pointer"
+            key={navItem.title}
+          >
+            {navItem.title}
+          </div>
+        ))}
       </div>
       <Drawer
         anchor="right"
@@ -64,6 +73,6 @@ export default function Toolbar({ navItems }: Props) {
           ))}
         </List>
       </Drawer>
-    </>
+    </div>
   );
 }

@@ -16,9 +16,10 @@ import { LandingPagesQuery } from '../sanity/sanity-quries';
 const LandingPage: NextPage = ({
   landingPage,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log(landingPage);
   return (
     <Layout landingPageData={landingPage}>
-      <div className="mx-4">
+      <div>
         <Header headerData={landingPage.header} />
         <Sections sections={landingPage.sections} />
         <Footer />
