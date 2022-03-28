@@ -28,7 +28,7 @@ function Sections({ sections }: Props) {
       case 'featureList':
         return (
           <div key={section._id}>
-            <FeatureList />
+            <FeatureList data={section} />
           </div>
         );
       case 'featureSummary':
@@ -40,13 +40,13 @@ function Sections({ sections }: Props) {
       case 'logoCloud':
         return (
           <div key={section._id}>
-            <LogoCloud />
+            <LogoCloud data={section} />
           </div>
         );
       case 'metrics':
         return (
           <div key={section._id}>
-            <Metrics />
+            <Metrics data={section} />
           </div>
         );
     }

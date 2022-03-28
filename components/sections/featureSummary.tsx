@@ -8,7 +8,6 @@ interface Props {
 }
 
 function FeatureSummary({ data }: Props) {
-  console.log(data);
   return (
     <div className="flex justify-center border-y border-neutral-100 border-opacity-20 bg-neutral-800">
       <div className="max-w-primary-col md:grid md:grid-cols-2 py-10 h-full px-global-sm ">
@@ -30,7 +29,7 @@ function FeatureSummary({ data }: Props) {
           )}
           {data.callToAction && (
             <div className="mt-6">
-              <CallToAction callToAction={data.callToAction} />
+              <CallToAction data={data.callToAction} />
             </div>
           )}
         </div>
