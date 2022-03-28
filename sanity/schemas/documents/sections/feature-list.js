@@ -15,7 +15,7 @@ export default {
       type: 'string'
     },
     {
-      name: 'healine',
+      name: 'headline',
       title: 'Main Feature Headline',
       description: 'A short headline describing the feature set',
       type: 'string'
