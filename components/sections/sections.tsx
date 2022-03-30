@@ -1,16 +1,18 @@
-import { SectionGroq } from '../../sanity/sanity-quries';
+import { PostListGroq, SectionGroq } from '../../sanity/sanity-queries';
 import FeatureSummary from '../sections/featureSummary';
 import CtaSection from './ctaSection';
 import FeatureList from './featureList';
 import Hero from './hero';
 import LogoCloud from './logoCloud';
 import Metrics from './metrics';
+import PostListSection from '../blog/postList';
 
 interface Props {
   sections: SectionGroq[];
+  postList: PostListGroq;
 }
 
-function Sections({ sections }: Props) {
+function Sections({ sections, postList }: Props) {
   const sectionsElements = sections.map((section) => {
     switch (section._type) {
       case 'hero':
@@ -22,7 +24,7 @@ function Sections({ sections }: Props) {
       case 'ctaSection':
         return (
           <div key={section._id}>
-            <CtaSection />
+            <CtaSection data={section} />
           </div>
         );
       case 'featureList':
@@ -47,6 +49,12 @@ function Sections({ sections }: Props) {
         return (
           <div key={section._id}>
             <Metrics data={section} />
+          </div>
+        );
+      case 'postList':
+        return (
+          <div key={section._id}>
+            <PostListSection data={section} postList={postList} />
           </div>
         );
     }

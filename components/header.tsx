@@ -1,26 +1,25 @@
-import { HeroGroq, CtaSectionGroq } from '../sanity/sanity-quries';
+import {
+  HeroGroq,
+  CtaSectionGroq,
+  GenericHeaderGroq,
+} from '../sanity/sanity-queries';
+import CtaSection from './sections/ctaSection';
 import Hero from './sections/hero';
+import GenericHeader from './sections/genericHeader';
 
 interface Props {
-  headerData: HeroGroq | CtaSectionGroq;
+  headerData: HeroGroq | CtaSectionGroq | GenericHeaderGroq;
 }
 
 function Header({ headerData }: Props) {
-  if (headerData._type === 'ctaSection')
-    // TODO: create ctaSection
-    return (
-      <>
-        <div>Cta Section works</div>
-        <div>{headerData.headline}</div>
-      </>
-    );
-
-  // Return hero component by default
-  return (
-    <>
-      <Hero data={headerData} />
-    </>
-  );
+  switch (headerData._type) {
+    default:
+      return <Hero data={headerData} />;
+    case 'ctaSection':
+      return <CtaSection data={headerData} />;
+    case 'genericHeader':
+      return <GenericHeader data={headerData} />;
+  }
 }
 
 export default Header;

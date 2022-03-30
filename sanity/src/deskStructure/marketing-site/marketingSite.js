@@ -18,6 +18,7 @@ export default S.listItem().title('Marketing Site').icon(GoGlobe)
           S.list().title('Sections')
             .items([
               S.listItem().title('Hero Sections').child(S.documentTypeList('hero')),
+              S.listItem().title('Generic Headers').child(S.documentTypeList('genericHeader')),
               S.listItem().title('Feature Summary').child(S.documentTypeList('featureSummary')),
               S.listItem().title('Feature List').child(S.documentTypeList('featureList')),
               S.listItem().title('CTA Section').child(S.documentTypeList('ctaSection')),

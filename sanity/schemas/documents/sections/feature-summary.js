@@ -37,12 +37,15 @@ export default {
       type: 'image',
     },
     {
-      name: 'callToAction',
+      name: 'callsToAction',
       title: 'Call to Action',
       description: 'Select the call-to-action to associate with this feature.',
-      type: 'reference',
-      to: [
-        {type: 'callToAction'}
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'callToAction'}]
+        }
       ]
     },
     {

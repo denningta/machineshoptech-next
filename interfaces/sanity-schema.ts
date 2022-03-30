@@ -93,7 +93,7 @@ export interface LandingPage extends SanityDocument {
    *
    * Select the header to display at the top of this page
    */
-  header?: SanityReference<Hero | CtaSection>;
+  header?: SanityReference<Hero | CtaSection | GenericHeader>;
 
   /**
    * Sections — `array`
@@ -276,11 +276,11 @@ export interface FeatureSummary extends SanityDocument {
   };
 
   /**
-   * Call to Action — `reference`
+   * Call to Action — `array`
    *
    * Select the call-to-action to associate with this feature.
    */
-  callToAction?: SanityReference<CallToAction>;
+  callsToAction?: Array<SanityKeyedReference<CallToAction>>;
 
   /**
    * Image — `image`
@@ -443,11 +443,18 @@ export interface SocialConnection extends SanityDocument {
   _type: "socialConnection";
 
   /**
-   * Social Media Type — `string`
+   * Social Media Platform — `string`
    *
    * Select the social media platform to connect
    */
-  type?: "facebook" | "instagram" | "twitter" | "linkedin";
+  platform?: string;
+
+  /**
+   * Icon — `iconPicker`
+   *
+   * Pick the icon for the social media platform
+   */
+  icon?: IconPicker;
 
   /**
    * URL — `url`
@@ -668,7 +675,7 @@ export interface CtaSection extends SanityDocument {
    *
    * Create a primary and/or secondary CTA for this section
    */
-  callToAction?: Array<SanityKeyedReference<CallToAction>>;
+  callsToAction?: Array<SanityKeyedReference<CallToAction>>;
 }
 
 /**
@@ -930,6 +937,36 @@ export interface TestimonialSection extends SanityDocument {
   testimonials?: Array<SanityKeyedReference<Testimonial>>;
 }
 
+/**
+ * Generic Header
+ *
+ *
+ */
+export interface GenericHeader extends SanityDocument {
+  _type: "genericHeader";
+
+  /**
+   * Internal Title — `string`
+   *
+   * Internal description for this header
+   */
+  title?: string;
+
+  /**
+   * Marketing Headline — `simplePortableText`
+   *
+   * The main text in the header section
+   */
+  headline?: SimplePortableText;
+
+  /**
+   * Sub Headline — `simplePortableText`
+   *
+   * A longer description that appears just beneath the main headline.
+   */
+  subHeadline?: SimplePortableText;
+}
+
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
@@ -964,7 +1001,8 @@ export type Documents =
   | LogoCloud
   | Team
   | PostList
-  | TestimonialSection;
+  | TestimonialSection
+  | GenericHeader;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but

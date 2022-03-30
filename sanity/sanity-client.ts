@@ -1,5 +1,7 @@
 import sanityClient from '@sanity/client';
-import imageUrlBuilder from '@sanity/image-url'
+
+import {createPreviewSubscriptionHook, createCurrentUserHook} from 'next-sanity'
+import createImageUrlBuilder from '@sanity/image-url'
 
 const client = sanityClient({
   projectId: 'b74i10k9',
@@ -10,8 +12,4 @@ const client = sanityClient({
 
 export default client;
 
-export const builder = imageUrlBuilder(client);
-
-export function urlFor(source) {
-  return builder.image(source)
-}
+export const imageBuilder = (source) => createImageUrlBuilder(client).image(source);

@@ -22,7 +22,7 @@ export default {
       type: 'string'
     },
     {
-      name: 'callToAction',
+      name: 'callsToAction',
       title: 'Call-to-Action',
       description: 'Create a primary and/or secondary CTA for this section',
       type: 'array',

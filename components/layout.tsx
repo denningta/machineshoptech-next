@@ -1,15 +1,21 @@
+import { NavItemGroq, SiteSettingsGroq } from '../sanity/sanity-queries';
 import Toolbar from './toolbar';
 
 interface Props {
-  landingPageData: any;
+  siteSettings: SiteSettingsGroq;
+  navItems: NavItemGroq[];
   children: JSX.Element[] | JSX.Element;
 }
 
-export default function Layout({ landingPageData, children }: Props) {
+export default function Layout({ siteSettings, navItems, children }: Props) {
   return (
     <>
-      <Toolbar navItems={landingPageData.navItems} />
-      <div id="main" className="absolute w-full mt-[60px]">
+      <Toolbar
+        navItems={navItems}
+        brandName={siteSettings.name || 'BrandName'}
+        brandIcon={siteSettings.icon || 'Logo'}
+      />
+      <div id="main" className="absolute w-full min-h-screen">
         {children}
       </div>
     </>

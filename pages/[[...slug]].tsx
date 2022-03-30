@@ -9,20 +9,28 @@ import Layout from '../components/layout';
 import Sections from '../components/sections/sections';
 import Footer from '../components/footer';
 import client from '../sanity/sanity-client';
-import { landingPagesQuery } from '../sanity/sanity-quries';
-import { landingPageQuery } from '../sanity/sanity-quries';
-import { LandingPagesQuery } from '../sanity/sanity-quries';
+import {
+  landingPagesQuery,
+  postListQuery,
+  siteSettingsQuery,
+} from '../sanity/sanity-queries';
+import { landingPageQuery } from '../sanity/sanity-queries';
+import { LandingPagesQuery } from '../sanity/sanity-queries';
 
 const LandingPage: NextPage = ({
+  siteSettings,
   landingPage,
+  postList,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   console.log(landingPage);
+  console.log(postList);
+  console.log(siteSettings);
   return (
-    <Layout landingPageData={landingPage}>
-      <div>
+    <Layout navItems={landingPage.navItems} siteSettings={siteSettings}>
+      <div className="mt-[60px]">
         <Header headerData={landingPage.header} />
-        <Sections sections={landingPage.sections} />
-        <Footer />
+        <Sections sections={landingPage.sections} postList={postList} />
+        <Footer footerData={landingPage.footer} />
       </div>
     </Layout>
   );
@@ -33,26 +41,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const paths = landingPages.map((landingPage) => {
     const slugArray = landingPage.slug.split('/');
-    // console.log(slugArray.includes('root'), slugArray);
     if (slugArray.includes('root')) return { params: { slug: [] } };
 
     return {
       params: { slug: slugArray },
     };
   });
-  console.log(paths);
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const siteSettings = await client.fetch(siteSettingsQuery);
+
   let slug = 'root';
   if (params?.slug && params.slug[0]) slug = params.slug[0];
-  console.log('getStaticProps Params:', slug);
   const landingPage = await client.fetch(landingPageQuery, {
     slug: slug,
   });
 
-  return { props: { landingPage } };
+  const postList = await client.fetch(postListQuery);
+
+  return { props: { siteSettings, landingPage, postList } };
 };
 
 export default LandingPage;

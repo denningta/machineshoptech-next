@@ -4,17 +4,18 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'type',
-      title: 'Social Media Type',
+      name: 'platform',
+      title: 'Social Media Platform',
       description: 'Select the social media platform to connect',
       type: 'string',
+    },
+    {
+      name: 'icon',
+      title: 'Icon',
+      description: 'Pick the icon for the social media platform',
+      type: 'iconPicker',
       options: {
-        list:[
-          {title: 'Facebook', value: 'facebook'},
-          {title: 'Instagram', value: 'instagram'},
-          {title: 'Twitter', value: 'twitter'},
-          {title: 'LinkedIn', value: 'linkedin'}
-        ]
+        providers: ["fa", "mdi", "hi", "fa"]
       }
     },
     {

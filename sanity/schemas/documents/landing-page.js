@@ -31,7 +31,8 @@ export default {
       type: 'reference',
       to: [
         {type: 'hero'},
-        {type: 'ctaSection'}
+        {type: 'ctaSection'},
+        {type: 'genericHeader'},
       ]
     },
     {

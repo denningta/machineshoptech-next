@@ -15,7 +15,8 @@
     "@sanity/desk-tool",
     "dashboard-widget-document-list",
     "icon-picker",
-    "@sanity/production-preview"
+    "@sanity/production-preview",
+    "inline-svg"
   ],
   "env": {
     "development": {
