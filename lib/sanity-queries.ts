@@ -7,9 +7,11 @@ import {
   FeatureSummary,
   Footer,
   GenericHeader,
+  LandingPage,
   LogoCloud,
   Metrics,
   NavItem,
+  Post,
   PostList,
   SanityImageAsset,
   SiteSettings,
@@ -23,7 +25,9 @@ import groq from 'groq';
 export const siteSettingsQuery = groq`*[_type == 'siteSettings'][0]`;
 export type SiteSettingsGroq = SiteSettings;
 
-export const landingPagesPathsQuery = groq`*[_type == 'landingPage'] { "slug": slug.current }`;
+export const landingPagesPathsQuery = groq`
+  *[_type == 'landingPage'] { "slug": slug.current }
+`;
 export type LandingPagesPathsGroq = [{ slug: string }];
 
 export const landingPageQuery = groq`
@@ -70,11 +74,30 @@ export const landingPageQuery = groq`
   }[0]
 `;
 
+export type LandingPageGroq = Omit<
+  LandingPage,
+  'footer' | 'header' | 'navItems' | 'sections'
+> & {
+  footer: FooterGroq;
+  header: HeaderGroq;
+  navItems: NavItemGroq[];
+  sections: SectionGroq[];
+};
+
 export type CallToActionGroq = Omit<CallToAction, 'route'> & {
   callToAction: Omit<CallToAction, 'route'> & {
     route: string;
   };
 };
+
+export const blogNavItems = groq`
+  *[_type == 'landingPage' && slug.current == 'blog']{
+  navItems[]->{
+    ...,
+    "route": route->slug.current
+  }
+}[0].navItems
+`;
 
 export type NavItemGroq = Omit<Pick<NavItem, 'title' | 'icon'>, 'route'> & {
   route: string;
@@ -125,6 +148,12 @@ export type SectionGroq =
   | MetricsGroq
   | PostListSectionGroq;
 
+export const postsPathsQuery = groq`
+  *[_type == 'post'] { "slug": slug.current }
+`;
+
+export type PostsPathsGroq = [{ slug: string }];
+
 export const postListQuery = groq`
     *[_type == 'post'] {
       slug,
@@ -159,3 +188,16 @@ export type PostCardGroq = {
 };
 
 export type PostListGroq = PostCardGroq[];
+
+export const postQuery = groq`
+  *[_type == 'post' && slug.current == $slug]{
+    ...,
+    author->,
+    categories[]->
+  }[0]
+`;
+
+export type PostGroq = Omit<Post, 'author' | 'categories'> & {
+  author: Author;
+  categories: Category[];
+};
