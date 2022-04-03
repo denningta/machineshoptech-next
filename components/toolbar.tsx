@@ -4,10 +4,10 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
-import { NavItemGroq } from '../sanity/sanity-queries';
+import { NavItemGroq } from '../lib/sanity-queries';
 import { ListItemButton } from '@mui/material';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { imageBuilder } from '../sanity/sanity-client';
+import { imageBuilder } from '../lib/sanity-client';
 import Image from 'next/image';
 import Logo from './logo';
 

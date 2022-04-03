@@ -1,4 +1,4 @@
-import { PostListGroq, PostListSectionGroq } from '../../sanity/sanity-queries';
+import { PostListGroq, PostListSectionGroq } from '../../lib/sanity-queries';
 import PostCard from './postCard';
 
 interface Props {

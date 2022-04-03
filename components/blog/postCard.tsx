@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react';
-import { PostCardGroq } from '../../sanity/sanity-queries';
+import { PostCardGroq } from '../../lib/sanity-queries';
 import Image from 'next/image';
-import { imageBuilder } from '../../sanity/sanity-client';
+import { imageBuilder } from '../../lib/sanity-client';
 
 interface Props {
   post: PostCardGroq;

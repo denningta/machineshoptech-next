@@ -1,4 +1,4 @@
-import { FooterGroq } from '../sanity/sanity-queries';
+import { FooterGroq } from '../lib/sanity-queries';
 import { RiCopyrightLine } from 'react-icons/ri';
 import Icon from './shared/icon';
 

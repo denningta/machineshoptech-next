@@ -1,4 +1,4 @@
-import { PostListGroq, SectionGroq } from '../../sanity/sanity-queries';
+import { PostListGroq, SectionGroq } from '../../lib/sanity-queries';
 import FeatureSummary from '../sections/featureSummary';
 import CtaSection from './ctaSection';
 import FeatureList from './featureList';

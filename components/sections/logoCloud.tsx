@@ -1,4 +1,4 @@
-import { LogoCloudGroq } from '../../sanity/sanity-queries';
+import { LogoCloudGroq } from '../../lib/sanity-queries';
 
 interface Props {
   data: LogoCloudGroq;

@@ -1,4 +1,4 @@
-import { NavItemGroq, SiteSettingsGroq } from '../sanity/sanity-queries';
+import { NavItemGroq, SiteSettingsGroq } from '../lib/sanity-queries';
 import Toolbar from './toolbar';
 
 interface Props {

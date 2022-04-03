@@ -8,14 +8,10 @@ import Header from '../components/header';
 import Layout from '../components/layout';
 import Sections from '../components/sections/sections';
 import Footer from '../components/footer';
-import client from '../sanity/sanity-client';
-import {
-  landingPagesQuery,
-  postListQuery,
-  siteSettingsQuery,
-} from '../sanity/sanity-queries';
-import { landingPageQuery } from '../sanity/sanity-queries';
-import { LandingPagesQuery } from '../sanity/sanity-queries';
+import client from '../lib/sanity-client';
+import { postListQuery } from '../lib/sanity-queries';
+import { landingPageQuery } from '../lib/sanity-queries';
+import { getLandingPagesPaths, getSiteSettings } from '../lib/api';
 
 const LandingPage: NextPage = ({
   siteSettings,
@@ -37,21 +33,12 @@ const LandingPage: NextPage = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const landingPages: LandingPagesQuery = await client.fetch(landingPagesQuery);
-
-  const paths = landingPages.map((landingPage) => {
-    const slugArray = landingPage.slug.split('/');
-    if (slugArray.includes('root')) return { params: { slug: [] } };
-
-    return {
-      params: { slug: slugArray },
-    };
-  });
+  const paths = await getLandingPagesPaths();
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const siteSettings = await client.fetch(siteSettingsQuery);
+  const siteSettings = await getSiteSettings();
 
   let slug = 'root';
   if (params?.slug && params.slug[0]) slug = params.slug[0];

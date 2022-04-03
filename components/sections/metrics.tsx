@@ -1,4 +1,4 @@
-import { MetricsGroq } from '../../sanity/sanity-queries';
+import { MetricsGroq } from '../../lib/sanity-queries';
 
 interface Props {
   data: MetricsGroq;

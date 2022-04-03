@@ -1,4 +1,4 @@
-import { FeatureListGroq } from '../../sanity/sanity-queries';
+import { FeatureListGroq } from '../../lib/sanity-queries';
 
 interface Props {
   data: FeatureListGroq;

@@ -1,4 +1,4 @@
-import { CallToActionGroq } from '../sanity/sanity-queries';
+import { CallToActionGroq } from '../lib/sanity-queries';
 import { BsChevronDoubleRight } from 'react-icons/bs';
 
 interface Props {

@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import { GenericHeaderGroq } from '../../sanity/sanity-queries';
+import { GenericHeaderGroq } from '../../lib/sanity-queries';
 
 interface Props {
   data: GenericHeaderGroq;

@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import { FeatureSummaryGroq } from '../../sanity/sanity-queries';
+import { FeatureSummaryGroq } from '../../lib/sanity-queries';
 import CallToAction from '../callToAction';
 
 interface Props {

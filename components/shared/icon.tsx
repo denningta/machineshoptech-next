@@ -1,4 +1,4 @@
-import { IconPickerGroq } from '../../sanity/sanity-queries';
+import { IconPickerGroq } from '../../lib/sanity-queries';
 import * as FontAwesome from 'react-icons/fa';
 import * as MaterialDesign from 'react-icons/md';
 import React from 'react';

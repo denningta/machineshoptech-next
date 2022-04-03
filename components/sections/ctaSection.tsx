@@ -1,4 +1,4 @@
-import { CtaSectionGroq } from '../../sanity/sanity-queries';
+import { CtaSectionGroq } from '../../lib/sanity-queries';
 import CallToAction from '../callToAction';
 
 interface Props {

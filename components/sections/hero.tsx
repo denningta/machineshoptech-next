@@ -1,4 +1,4 @@
-import { HeroGroq } from '../../sanity/sanity-queries';
+import { HeroGroq } from '../../lib/sanity-queries';
 import { PortableText } from '@portabletext/react';
 import { BsChevronDoubleDown } from 'react-icons/bs';
 import CallToAction from '../callToAction';

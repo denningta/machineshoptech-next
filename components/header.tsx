@@ -2,7 +2,7 @@ import {
   HeroGroq,
   CtaSectionGroq,
   GenericHeaderGroq,
-} from '../sanity/sanity-queries';
+} from '../lib/sanity-queries';
 import CtaSection from './sections/ctaSection';
 import Hero from './sections/hero';
 import GenericHeader from './sections/genericHeader';

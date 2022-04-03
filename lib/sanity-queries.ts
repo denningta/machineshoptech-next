@@ -1,15 +1,30 @@
-import { Author, BlockContent, CallToAction, Category, FeatureList, FeatureSummary, Footer, GenericHeader, LogoCloud, Metrics, NavItem, PostList, SanityImageAsset, SiteSettings, SocialConnection } from "../interfaces/sanity-schema";
-import { Hero } from "../interfaces/sanity-schema";
-import { CtaSection } from "../interfaces/sanity-schema";
+import {
+  Author,
+  BlockContent,
+  CallToAction,
+  Category,
+  FeatureList,
+  FeatureSummary,
+  Footer,
+  GenericHeader,
+  LogoCloud,
+  Metrics,
+  NavItem,
+  PostList,
+  SanityImageAsset,
+  SiteSettings,
+  SocialConnection,
+} from '../interfaces/sanity-schema';
+import { Hero } from '../interfaces/sanity-schema';
+import { CtaSection } from '../interfaces/sanity-schema';
 
-const groq = require("groq");
-
+import groq from 'groq';
 
 export const siteSettingsQuery = groq`*[_type == 'siteSettings'][0]`;
 export type SiteSettingsGroq = SiteSettings;
 
-export const landingPagesQuery = groq`*[_type == 'landingPage'] { "slug": slug.current }`;
-export type LandingPagesQuery = [{ slug: string }];
+export const landingPagesPathsQuery = groq`*[_type == 'landingPage'] { "slug": slug.current }`;
+export type LandingPagesPathsGroq = [{ slug: string }];
 
 export const landingPageQuery = groq`
     *[_type == 'landingPage' && slug.current == $slug]{
@@ -58,25 +73,27 @@ export const landingPageQuery = groq`
 export type CallToActionGroq = Omit<CallToAction, 'route'> & {
   callToAction: Omit<CallToAction, 'route'> & {
     route: string;
-  }
-}
+  };
+};
 
-export type NavItemGroq = Omit<Pick<NavItem, 'title' | 'icon'>, 'route'> & { route: string };
+export type NavItemGroq = Omit<Pick<NavItem, 'title' | 'icon'>, 'route'> & {
+  route: string;
+};
 
 export type IconPickerGroq = {
   _type?: string;
   name: string;
   provider: string;
-} 
+};
 
 // Sections
 export type HeroGroq = Omit<Hero, 'callsToAction'> & {
   callsToAction: CallToActionGroq[];
-}
+};
 
 export type CtaSectionGroq = Omit<CtaSection, 'callsToAction'> & {
   callsToAction: CallToActionGroq[];
-}
+};
 
 export type GenericHeaderGroq = GenericHeader;
 
@@ -99,16 +116,16 @@ export type FooterGroq = Omit<Footer, 'navItems' | 'socials'> & {
   socials: SocialConnection[];
 };
 
-export type SectionGroq = 
-  HeroGroq | 
-  CtaSectionGroq | 
-  FeatureListGroq | 
-  FeatureSummaryGroq |
-  LogoCloudGroq | 
-  MetricsGroq |
-  PostListSectionGroq;
+export type SectionGroq =
+  | HeroGroq
+  | CtaSectionGroq
+  | FeatureListGroq
+  | FeatureSummaryGroq
+  | LogoCloudGroq
+  | MetricsGroq
+  | PostListSectionGroq;
 
-  export const postListQuery = groq`
+export const postListQuery = groq`
     *[_type == 'post'] {
       slug,
       title,
@@ -127,18 +144,18 @@ export type SectionGroq =
     } | order(publishedAt desc)
   `;
 
-  export type PostCardGroq = {
-    slug: { _type: "slug"; current: string };
-    title: string;
-    author: Author;
-    categories: Category[];
-    mainImage: SanityImageAsset;
-    excerpt: BlockContent;
-    featured: boolean;
-    publishedAt: string;
-    numberOfCharacters: number;
-    estimatedWordCount: number;
-    estimatedReadingTime: number;
-  };
+export type PostCardGroq = {
+  slug: { _type: 'slug'; current: string };
+  title: string;
+  author: Author;
+  categories: Category[];
+  mainImage: SanityImageAsset;
+  excerpt: BlockContent;
+  featured: boolean;
+  publishedAt: string;
+  numberOfCharacters: number;
+  estimatedWordCount: number;
+  estimatedReadingTime: number;
+};
 
-  export type PostListGroq = PostCardGroq[]
+export type PostListGroq = PostCardGroq[];
