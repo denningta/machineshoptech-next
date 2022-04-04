@@ -46,7 +46,7 @@ a {
 }
 
 .portable-text blockquote {
-  @apply mt-4 pl-6 border-l-4;
+  @apply mt-4 pl-6 border-l-4 border-white/50 italic;
 }
 
 .portable-text ul {
@@ -54,7 +54,7 @@ a {
 }
 
 .portable-text a {
-  @apply text-primary-500 underline;
+  @apply text-primary-500 underline underline-offset-4;
 }
 
 .portable-text strong {

@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { RefObject, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItemText from '@mui/material/ListItemText';
 import { NavItemGroq } from '../lib/sanity-queries';
-import { ListItemButton } from '@mui/material';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import Logo from './logo';
 import Link from 'next/link';
+import React from 'react';
+import NavItem from './navItem';
+import NavMenu from './navMenu';
 
 interface Props {
   navItems: NavItemGroq[];
@@ -15,28 +14,8 @@ interface Props {
   brandIcon: SanityImageSource;
 }
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
-
-export default function Toolbar({ navItems, brandName, brandIcon }: Props) {
-  const [state, setState] = useState({
-    right: false,
-  });
-
-  const toggleDrawer =
-    (anchor: Anchor, open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
-
-      setState({ ...state, [anchor]: open });
-    };
-
-  console.log(brandIcon);
+export default function Toolbar({ navItems, brandName }: Props) {
+  const [showNavMenu, setShowNavMenu] = useState(false);
 
   return (
     <div className="fixed flex justify-center z-50 top-0 left-0 w-full h-[60px] bg-neutral-900 bg-opacity-60 backdrop-blur-sm border-b border-white border-opacity-10">
@@ -44,42 +23,32 @@ export default function Toolbar({ navItems, brandName, brandIcon }: Props) {
         <Logo width={40} height={40} fill="#fff" />
         <div className="text-xl ml-3">{brandName}</div>
         <div className="grow"></div>
-        <div
-          className="text-2xl cursor-pointer sm:hidden"
-          onClick={toggleDrawer('right', true)}
+        <button
+          className="h-[40px] w-[40px] flex flex-col items-center justify-center text-2xl cursor-pointer sm:hidden"
+          onClick={() => setShowNavMenu(!showNavMenu)}
         >
-          <GiHamburgerMenu />
+          <div
+            className={`h-[2px] w-[30px] bg-white ease-in-out duration-100 mb-[10px] ${
+              showNavMenu ? 'rotate-45 translate-y-[6px]' : 'rotate-0'
+            }`}
+          ></div>
+          <div
+            className={`h-[2px] w-[30px] bg-white ease-in-out duration-200 ${
+              showNavMenu ? '-rotate-45 -translate-y-[6px]' : 'rotate-0'
+            }`}
+          ></div>
+        </button>
+        <div className="hidden sm:flex">
+          <NavMenu navItems={navItems} direction="horizontal" />
         </div>
-        {navItems.map((navItem) => (
-          <Link
-            key={navItem.title}
-            href={navItem.route === 'root' ? '/' : `/${navItem.route}`}
-          >
-            <div className="text-md ml-4 hidden sm:flex cursor-pointer">
-              {navItem.title}
-            </div>
-          </Link>
-        ))}
+        <div
+          className={`absolute top-[60px] sm:hidden w-full h-screen left-0 bg-neutral-800 overflow-auto transition-all ease-in-out duration-300 ${
+            showNavMenu ? 'translate-y-0' : 'translate-y-full'
+          }`}
+        >
+          <NavMenu navItems={navItems} direction="vertical" />
+        </div>
       </div>
-      <Drawer
-        anchor="right"
-        open={state['right']}
-        onClose={toggleDrawer('right', false)}
-        PaperProps={{ className: 'bg-neutral-800 text-white' }}
-      >
-        <List>
-          {navItems.map((navItem) => (
-            <Link
-              key={navItem.title}
-              href={navItem.route === 'root' ? '/' : navItem.route}
-            >
-              <ListItemButton component="a">
-                <ListItemText primary={navItem.title} />
-              </ListItemButton>
-            </Link>
-          ))}
-        </List>
-      </Drawer>
     </div>
   );
 }

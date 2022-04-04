@@ -1,5 +1,7 @@
 import { PortableText } from '@portabletext/react';
+import { imageBuilder } from '../../lib/sanity-client';
 import { FeatureSummaryGroq } from '../../lib/sanity-queries';
+import Image from 'next/image';
 import CallToAction from '../callToAction';
 
 interface Props {
@@ -35,11 +37,13 @@ function FeatureSummary({ data }: Props) {
           </div>
         </div>
         {data.image && (
-          <div className="flex flex-col justify-center items-center mt-10 w-full">
-            {/* <img
-              className="object-center rounded overflow-clip w-[500px]"
-              src={urlFor(data.image).width(500).url()}
-            /> */}
+          <div className="flex flex-col justify-center items-center mt-10 w-full rounded-lg overflow-clip">
+            <Image
+              width={540}
+              height={340}
+              alt={`Cover Image for ${data.headline}`}
+              src={imageBuilder(data.image).width(540).height(340).url()}
+            />
           </div>
         )}
       </div>
