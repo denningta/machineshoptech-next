@@ -2,6 +2,8 @@ import { ParsedUrlQuery } from 'querystring';
 import client from './sanity-client';
 import {
   blogNavItems,
+  FooterGroq,
+  footerQuery,
   LandingPageGroq,
   landingPageQuery,
   LandingPagesPathsGroq,
@@ -48,6 +50,10 @@ export async function getLandingPage(
 
 export async function getBlogNavItems(): Promise<NavItemGroq[]> {
   return await client.fetch(blogNavItems);
+}
+
+export async function getFooter(slug: string): Promise<FooterGroq> {
+  return await client.fetch(footerQuery, { slug: slug });
 }
 
 export async function getPostList(): Promise<PostListGroq> {

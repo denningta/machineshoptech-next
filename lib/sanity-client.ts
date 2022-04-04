@@ -11,5 +11,5 @@ const client = sanityClient({
 
 export default client;
 
-export const imageBuilder = (source: SanityImageSource) =>
+export const imageBuilder = (source) =>
   createImageUrlBuilder(client).image(source);

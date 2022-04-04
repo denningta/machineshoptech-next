@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { FaBeer } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -7,9 +6,8 @@ import ListItemText from '@mui/material/ListItemText';
 import { NavItemGroq } from '../lib/sanity-queries';
 import { ListItemButton } from '@mui/material';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { imageBuilder } from '../lib/sanity-client';
-import Image from 'next/image';
 import Logo from './logo';
+import Link from 'next/link';
 
 interface Props {
   navItems: NavItemGroq[];
@@ -53,12 +51,14 @@ export default function Toolbar({ navItems, brandName, brandIcon }: Props) {
           <GiHamburgerMenu />
         </div>
         {navItems.map((navItem) => (
-          <div
-            className="text-md ml-4 hidden sm:flex cursor-pointer"
+          <Link
             key={navItem.title}
+            href={navItem.route === 'root' ? '/' : `/${navItem.route}`}
           >
-            {navItem.title}
-          </div>
+            <div className="text-md ml-4 hidden sm:flex cursor-pointer">
+              {navItem.title}
+            </div>
+          </Link>
         ))}
       </div>
       <Drawer
@@ -69,13 +69,14 @@ export default function Toolbar({ navItems, brandName, brandIcon }: Props) {
       >
         <List>
           {navItems.map((navItem) => (
-            <ListItemButton
+            <Link
               key={navItem.title}
-              component="a"
               href={navItem.route === 'root' ? '/' : navItem.route}
             >
-              <ListItemText primary={navItem.title} />
-            </ListItemButton>
+              <ListItemButton component="a">
+                <ListItemText primary={navItem.title} />
+              </ListItemButton>
+            </Link>
           ))}
         </List>
       </Drawer>

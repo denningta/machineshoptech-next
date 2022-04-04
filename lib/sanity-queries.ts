@@ -134,6 +134,24 @@ export type PostListSectionGroq = PostList;
 
 export type HeaderGroq = HeroGroq | CtaSectionGroq | GenericHeaderGroq;
 
+export const footerQuery = groq`
+  *[_type == 'landingPage' && slug.current == $slug]{
+    "footer": footer->{
+      "navItems": navItems[]->{
+        ...,
+        icon,
+        title,
+        "route": route->slug.current
+      },
+      socials[]->{
+        ...,
+        type,
+        url
+      }
+    },
+  }[0].footer
+`;
+
 export type FooterGroq = Omit<Footer, 'navItems' | 'socials'> & {
   navItems: NavItemGroq[];
   socials: SocialConnection[];
@@ -193,11 +211,13 @@ export const postQuery = groq`
   *[_type == 'post' && slug.current == $slug]{
     ...,
     author->,
-    categories[]->
+    categories[]->,
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
   }[0]
 `;
 
 export type PostGroq = Omit<Post, 'author' | 'categories'> & {
   author: Author;
   categories: Category[];
+  estimatedReadingTime: number;
 };
