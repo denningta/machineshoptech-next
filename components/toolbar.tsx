@@ -1,11 +1,8 @@
-import { RefObject, useState } from 'react';
-import { GiHamburgerMenu } from 'react-icons/gi';
+import { useState } from 'react';
 import { NavItemGroq } from '../lib/sanity-queries';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import Logo from './logo';
-import Link from 'next/link';
 import React from 'react';
-import NavItem from './navItem';
 import NavMenu from './navMenu';
 
 interface Props {

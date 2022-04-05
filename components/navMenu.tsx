@@ -8,10 +8,13 @@ interface Props {
 
 function NavMenu({ navItems, direction }: Props) {
   const verticalNavMenu = (
-    <div className="w-full flex flex-col p-6">
+    <div className="w-full flex flex-col">
       {navItems.map((navItem) => (
-        <div key={navItem.title} className="mb-4 text-xl">
-          <NavItem navItem={navItem} />
+        <div key={navItem.title} className="">
+          <NavItem
+            navItem={navItem}
+            className="text-lg p-4 hover:bg-white hover:bg-opacity-5 cursor-pointer"
+          />
         </div>
       ))}
     </div>
@@ -20,7 +23,9 @@ function NavMenu({ navItems, direction }: Props) {
   const horizontalNavMenu = (
     <div className="flex text-lg">
       {navItems.map((navItem) => (
-        <NavItem key={navItem.title} navItem={navItem} />
+        <div key={navItem.title} className="ml-6">
+          <NavItem navItem={navItem} />
+        </div>
       ))}
     </div>
   );
@@ -31,7 +36,6 @@ function NavMenu({ navItems, direction }: Props) {
     case 'horizontal':
       return horizontalNavMenu;
   }
-  return <div>Nav Menu works</div>;
 }
 
 export default NavMenu;

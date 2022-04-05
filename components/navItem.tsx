@@ -3,15 +3,18 @@ import { NavItemGroq } from '../lib/sanity-queries';
 
 interface Props {
   navItem: NavItemGroq;
+  className?: string;
 }
 
-function NavItem({ navItem }: Props) {
+function NavItem({ navItem, className = '' }: Props) {
   return (
     <Link
       key={navItem.title}
       href={navItem.route === 'root' ? '/' : `/${navItem.route}`}
     >
-      <div className="text-md ml-4 sm:flex cursor-pointer">{navItem.title}</div>
+      <div className={`sm:flex cursor-pointer ` + className}>
+        {navItem.title}
+      </div>
     </Link>
   );
 }

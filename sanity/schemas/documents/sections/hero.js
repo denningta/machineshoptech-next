@@ -13,7 +13,7 @@ export default {
       name: 'headline',
       title: 'Marketing Headline',
       description: 'The main text in the hero section',
-      type: 'string'
+      type: 'simplePortableText'
     },
     {
       name: 'subHeadline',

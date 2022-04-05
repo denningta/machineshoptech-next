@@ -187,11 +187,11 @@ export interface Hero extends SanityDocument {
   title?: string;
 
   /**
-   * Marketing Headline — `string`
+   * Marketing Headline — `simplePortableText`
    *
    * The main text in the hero section
    */
-  headline?: string;
+  headline?: SimplePortableText;
 
   /**
    * Sub Headline — `simplePortableText`

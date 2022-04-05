@@ -11,12 +11,14 @@ function Hero({ data }: Props) {
   return (
     <div className="flex justify-center text-center mx-global-sm h-screen sm:h-[500px] -mt-[60px]">
       <div className="relative flex flex-col justify-center h-full max-w-primary-col">
-        <div className="">
+        <div className="max-w-[650px]">
           {data.headline && (
-            <div className="text-3xl font-extrabold">{data.headline}</div>
+            <div className="hero-portable-text text-5xl font-extrabold">
+              <PortableText value={data.headline} />
+            </div>
           )}
           {data.subHeadline && (
-            <div className="opacity-70 my-4">
+            <div className="hero-portable-text opacity-70 my-4">
               <PortableText value={data.subHeadline} />
             </div>
           )}
@@ -27,11 +29,6 @@ function Hero({ data }: Props) {
                 <CallToAction data={callToAction} />
               </div>
             ))}
-          {/* {data.image && (
-            <div>
-              <img src={urlFor(data.image).width(500).url()} />
-            </div>
-          )} */}
         </div>
 
         <div className="absolute bottom-0 w-full flex justify-center items-end pb-4">

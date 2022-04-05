@@ -60,3 +60,7 @@ a {
 .portable-text strong {
   @apply font-extrabold;
 }
+
+.hero-portable-text strong {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500;
+}
