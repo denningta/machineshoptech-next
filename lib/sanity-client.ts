@@ -1,5 +1,7 @@
 import sanityClient from '@sanity/client';
 import createImageUrlBuilder from '@sanity/image-url';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { SanityImageAsset } from 'sanity-codegen';
 
 const client = sanityClient({
   projectId: 'b74i10k9',
@@ -10,5 +12,5 @@ const client = sanityClient({
 
 export default client;
 
-export const imageBuilder = (source) =>
+export const imageBuilder = (source: SanityImageSource) =>
   createImageUrlBuilder(client).image(source);

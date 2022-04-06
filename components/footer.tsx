@@ -1,6 +1,5 @@
 import { FooterGroq } from '../lib/sanity-queries';
 import { RiCopyrightLine } from 'react-icons/ri';
-import Icon from './shared/icon';
 
 interface Props {
   footerData: FooterGroq;
@@ -20,9 +19,7 @@ function Footer({ footerData }: Props) {
           </div>
           <div className="flex mt-8">
             {footerData.socials?.map((social) => (
-              <div key={social._id} className="mx-6">
-                <Icon iconPicker={social.icon} />
-              </div>
+              <div key={social._id} className="mx-6"></div>
             ))}
           </div>
           <div className="flex mt-8 items-center">

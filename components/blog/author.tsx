@@ -11,7 +11,7 @@ function Author({ post }: Props) {
   return (
     <div className="flex items-center mt-6">
       <div className="w-[60px] h-[60px] rounded-full overflow-clip mr-4">
-        {post.author && (
+        {post.author.image && (
           <Image
             width={540}
             height={540}
