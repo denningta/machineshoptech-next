@@ -1,0 +1,17 @@
+{
+  "types": [
+    {
+      "type": "post",
+      "field": "publishedAt",
+      "titleField": "title"
+    }
+  ],
+  "calendar": {
+    "event": {
+      "dateFormat": "MMMM, dd yyy",
+      "timeFormat": "hh:mm a",
+      "showAuthor": "true"
+    }
+  },
+  "filterWarnings": []
+}

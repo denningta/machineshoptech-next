@@ -14,6 +14,14 @@ export default {
       type: 'string'
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'headline'
+      }
+    },
+    {
       name: 'subHeadline',
       title: 'Sub-headline',
       type: 'string'

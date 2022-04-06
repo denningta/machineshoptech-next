@@ -10,11 +10,11 @@ interface Props {
 
 function FeatureSummary({ data }: Props) {
   return (
-    <div className="flex justify-center border-y border-neutral-100 border-opacity-20 bg-neutral-800">
+    <div className="flex justify-center">
       <div className="max-w-primary-col md:grid md:grid-cols-2 my-16 h-full px-global-sm ">
         <div className="flex flex-col justify-center pr-5">
           {data.headline && (
-            <div className="text-neutral-100 font-extrabold text-lg">
+            <div className="text-primary-300 font-extrabold text-lg">
               {data.headline}
             </div>
           )}
@@ -37,8 +37,9 @@ function FeatureSummary({ data }: Props) {
           </div>
         </div>
         {data.image && (
-          <div className="flex flex-col justify-center items-center mt-10 w-full rounded-lg overflow-clip">
+          <div className="flex flex-col justify-center items-center mt-10 w-full">
             <Image
+              className="rounded-lg overflow-clip shadow-lg"
               width={540}
               height={340}
               alt={`Cover Image for ${data.headline}`}

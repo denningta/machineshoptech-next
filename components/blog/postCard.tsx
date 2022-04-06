@@ -12,7 +12,7 @@ interface Props {
 function PostCard({ post }: Props) {
   return (
     <Link href={`/blog/${post.slug.current}`}>
-      <div className="bg-neutral-800 rounded-lg overflow-clip cursor-pointer transition ease-in-out hover:scale-[1.01]">
+      <div className="bg-neutral-800 rounded-lg overflow-clip cursor-pointer shadow-xl  transition ease-in-out hover:scale-[1.01]">
         <div className="flex flex-col p-6 h-full">
           <div className="-mx-6 -mt-6">
             <Image
@@ -21,7 +21,7 @@ function PostCard({ post }: Props) {
               src={imageBuilder(post.mainImage).width(1240).height(540).url()}
             />
           </div>
-          <div className="flex pt-4">
+          <div className="flex pt-4 text-primary-300">
             {post.categories.map((category) => (
               <div key={category._id} className="mr-4">
                 {category.title}

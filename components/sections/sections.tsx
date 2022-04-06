@@ -13,6 +13,8 @@ interface Props {
 }
 
 function Sections({ sections, postList }: Props) {
+  console.log(sections);
+  if (!sections) return <></>;
   const sectionsElements = sections.map((section) => {
     switch (section._type) {
       case 'hero':

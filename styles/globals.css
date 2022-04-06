@@ -42,7 +42,7 @@ a {
 }
 
 .portable-text p {
-  @apply mt-4 leading-loose;
+  @apply mt-4 leading-loose text-lg;
 }
 
 .portable-text blockquote {
@@ -50,11 +50,15 @@ a {
 }
 
 .portable-text ul {
-  @apply mt-4 list-disc ml-10;
+  @apply mt-4 list-disc ml-10 text-lg;
+}
+
+.portable-text li {
+  @apply mt-3;
 }
 
 .portable-text a {
-  @apply text-primary-500 underline underline-offset-4;
+  @apply text-primary-300 hover:text-primary-100 underline underline-offset-4;
 }
 
 .portable-text strong {
@@ -62,5 +66,5 @@ a {
 }
 
 .hero-portable-text strong {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500;
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-accent-100 to-accent-700;
 }

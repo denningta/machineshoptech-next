@@ -52,9 +52,12 @@ export const landingPageQuery = groq`
       headline,
       subHeadline,
       image,
-      "callsToAction": callsToAction[]->{
+      callsToAction[]->{
         ...,
-        "route": pageLink->slug.current
+        "route": {
+          "slug": pageLink->slug.current,
+          "type": pageLink->_type,
+        }
       }
     },
     "navItems": navItems[]->{
@@ -67,7 +70,10 @@ export const landingPageQuery = groq`
       ...,
       callsToAction[]->{
         ...,
-        "route": pageLink->slug.current
+        "route": {
+          "slug": pageLink->slug.current,
+          "type": pageLink->_type,
+        }
       }
     }
 
@@ -85,8 +91,9 @@ export type LandingPageGroq = Omit<
 };
 
 export type CallToActionGroq = Omit<CallToAction, 'route'> & {
-  callToAction: Omit<CallToAction, 'route'> & {
-    route: string;
+  route: {
+    slug: string;
+    type: 'landingPage' | 'post';
   };
 };
 
@@ -166,6 +173,12 @@ export type SectionGroq =
   | MetricsGroq
   | PostListSectionGroq;
 
+export const postListPathsQuery = groq`
+  *[_type == 'postList'] { "slug": slug.current }
+`;
+
+export type PostListPathsGroq = [{ slug: string }];
+
 export const postsPathsQuery = groq`
   *[_type == 'post'] { "slug": slug.current }
 `;
@@ -212,12 +225,26 @@ export const postQuery = groq`
     ...,
     author->,
     categories[]->,
+    footerSections[]->{
+      ...,
+      callsToAction[]->{
+        ...,
+        "route": {
+          "slug": pageLink->slug.current,
+          "type": pageLink->_type,
+        }
+      }
+    },
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
   }[0]
 `;
 
-export type PostGroq = Omit<Post, 'author' | 'categories'> & {
+export type PostGroq = Omit<
+  Post,
+  'author' | 'categories' | 'footerSections'
+> & {
   author: Author;
   categories: Category[];
+  footerSections: SectionGroq[];
   estimatedReadingTime: number;
 };

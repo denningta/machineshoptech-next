@@ -33,8 +33,8 @@ function PostListSection({ data, postList }: Props) {
   return (
     <div className="flex flex-col items-center w-full py-16 px-global-sm">
       <div className="max-w-primary-col w-full">
-        <div className="text-xl font-thin tracking-widest">
-          {data.headline?.toUpperCase()}
+        <div className="flex tracking-widest">
+          <div className="grow text-xl">{data.headline?.toUpperCase()}</div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-8 md:gap-8 mt-6">
           {postListContent}

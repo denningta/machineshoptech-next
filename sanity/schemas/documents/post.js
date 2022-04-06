@@ -59,6 +59,25 @@ export default {
       title: 'Body',
       type: 'blockContent',
     },
+    {
+      name: 'footerSections',
+      title: 'Footer Sections',
+      description: 'When the reader is done reading the post, what do you want them to see?',
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [
+          { type: 'ctaSection' },
+          { type: 'featureList' },
+          { type: 'featureSummary' },
+          { type: 'genericHeader' },
+          { type: 'hero' },
+          { type: 'logoCloud' },
+          { type: 'team' },
+          { type: 'testimonialSection' },
+        ]
+      }]
+    }
   ],
 
   preview: {

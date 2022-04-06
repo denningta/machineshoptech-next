@@ -1,28 +1,37 @@
 import { CallToActionGroq } from '../lib/sanity-queries';
 import { BsChevronDoubleRight } from 'react-icons/bs';
+import Link from 'next/link';
 
 interface Props {
   data: CallToActionGroq;
 }
 
 function CallToAction({ data }: Props) {
+  console.log(data);
+  let route = '';
+  if (data.route.type === 'post') {
+    route = '/blog/' + data.route.slug;
+  } else if (data.route.type === 'landingPage') {
+    route = '/' + data.route.slug;
+  }
+
   switch (data.style) {
     default: // Default to Primary
       return (
-        <div className="">
-          <button className="flex items-center px-5 py-2 rounded-full bg-primary-700">
-            <div className="mr-3">{data.buttonText}</div>
+        <Link href={route}>
+          <button className="flex items-center px-5 py-2 rounded-full transition ease-in-out bg-primary-500 hover:bg-primary-400 hover:scale-[1.02]">
+            <div className="">{data.buttonText}</div>
           </button>
-        </div>
+        </Link>
       );
     case 'secondary':
       return (
-        <div className="">
+        <Link href={route}>
           <button className="flex items-center px-5 py-2 rounded-full bg-gray-700">
             <div className=" mr-3">{data.buttonText}</div>
             <BsChevronDoubleRight />
           </button>
-        </div>
+        </Link>
       );
     case 'email':
       return (

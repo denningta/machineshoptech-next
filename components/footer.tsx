@@ -8,7 +8,7 @@ interface Props {
 
 function Footer({ footerData }: Props) {
   return (
-    <div className="flex w-full justify-center bg-gray-800 border-t border-gray-600 px-global-sm">
+    <div className="flex w-full justify-center bg-neutral-800 border-t border-neutral-600 px-global-sm">
       <div className="grow max-w-primary-col py-16">
         <div className="flex flex-col items-center w-full">
           <div className="flex">
