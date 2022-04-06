@@ -109,6 +109,7 @@ export interface LandingPage extends SanityDocument {
       | Metrics
       | CtaSection
       | PostList
+      | Form
     >
   >;
 
@@ -992,6 +993,29 @@ export interface GenericHeader extends SanityDocument {
   subHeadline?: SimplePortableText;
 }
 
+/**
+ * Form
+ *
+ *
+ */
+export interface Form extends SanityDocument {
+  _type: 'form';
+
+  /**
+   * Form Title — `string`
+   *
+   * Title this form
+   */
+  title?: string;
+
+  /**
+   * Type — `string`
+   *
+   * Select the form type
+   */
+  type?: 'contact' | 'newsletter';
+}
+
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
@@ -1027,7 +1051,8 @@ export type Documents =
   | Team
   | PostList
   | TestimonialSection
-  | GenericHeader;
+  | GenericHeader
+  | Form;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but

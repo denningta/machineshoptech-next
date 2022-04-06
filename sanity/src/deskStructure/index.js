@@ -27,7 +27,8 @@ const hiddenDocTypes = listItem => ![
     'callToAction',
     'postList',
     'testimonialSection',
-    'genericHeader'
+    'genericHeader',
+    'form',
   ].includes(listItem.getId())
 
 export default () =>

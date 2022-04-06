@@ -6,6 +6,7 @@ import {
   FeatureList,
   FeatureSummary,
   Footer,
+  Form,
   GenericHeader,
   LandingPage,
   LogoCloud,
@@ -164,6 +165,8 @@ export type FooterGroq = Omit<Footer, 'navItems' | 'socials'> & {
   socials: SocialConnection[];
 };
 
+export type FormGroq = Form;
+
 export type SectionGroq =
   | HeroGroq
   | CtaSectionGroq
@@ -171,7 +174,8 @@ export type SectionGroq =
   | FeatureSummaryGroq
   | LogoCloudGroq
   | MetricsGroq
-  | PostListSectionGroq;
+  | PostListSectionGroq
+  | FormGroq;
 
 export const postListPathsQuery = groq`
   *[_type == 'postList'] { "slug": slug.current }

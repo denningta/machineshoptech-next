@@ -28,6 +28,7 @@ export default S.listItem().title('Marketing Site').icon(GoGlobe)
               S.listItem().title('Testimonial Section').child(S.documentTypeList('testimonialSection')),
               S.listItem().title('Blog Post List').child(S.documentTypeList('postList')),
               S.listItem().title('Footer').child(S.documentTypeList('footer')),
+              S.listItem().title('Forms').child(S.documentTypeList('form')),
             ])
         ),
       S.listItem().title('Calls to Action (CTA)').icon(MdOutlineCallToAction)

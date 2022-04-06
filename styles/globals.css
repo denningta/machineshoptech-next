@@ -21,7 +21,7 @@ a {
 
 @layer components {
   body {
-    @apply bg-neutral-900 text-white;
+    @apply bg-neutral-900 text-white text-lg;
   }
 }
 
@@ -67,4 +67,16 @@ a {
 
 .hero-portable-text strong {
   @apply bg-clip-text text-transparent bg-gradient-to-br from-accent-100 to-accent-700;
+}
+
+.btn-primary {
+  @apply px-5 py-2 rounded-full transition ease-in-out bg-primary-500 hover:bg-primary-400 hover:scale-[1.02] w-fit;
+}
+
+.form-input {
+  @apply outline-none border text-lg rounded-lg block w-full p-2.5 bg-neutral-700 border-neutral-600 placeholder-neutral-400 text-white focus:ring-primary-500 focus:border-primary-500;
+}
+
+.form-label {
+  @apply block mb-2 text-lg font-medium text-gray-900 dark:text-gray-300;
 }

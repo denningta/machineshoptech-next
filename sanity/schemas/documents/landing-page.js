@@ -50,6 +50,7 @@ export default {
           {type: 'metrics'},
           {type: 'ctaSection'},
           {type: 'postList'},
+          {type: 'form'},
         ]
       }]
     },
