@@ -1,0 +1,6 @@
+type ContactMessage {
+  name: String
+  email: String
+  message: String
+  createdAt: String
+}
