@@ -3,11 +3,18 @@ import * as React from 'react';
 interface Props {
   width: number;
   height: number;
-  fill: string;
+  fill?: string;
+  className?: string;
 }
 
-const SvgMachineshoptechlogo = ({ width, height, fill = '#000' }: Props) => (
+const SvgMachineshoptechlogo = ({
+  width,
+  height,
+  fill = '#000',
+  className = '',
+}: Props) => (
   <svg
+    className={className}
     width={width}
     height={height}
     viewBox="0 0 134.815 134.734"
