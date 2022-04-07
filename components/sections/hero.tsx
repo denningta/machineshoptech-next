@@ -9,7 +9,7 @@ interface Props {
 
 function Hero({ data }: Props) {
   return (
-    <div className="flex justify-center text-center mx-global-sm h-screen sm:h-[500px] -mt-[60px]">
+    <div className="flex justify-center text-center px-global-sm h-screen sm:h-[500px] border-b border-neutral-800">
       <div className="relative flex flex-col justify-center h-full max-w-primary-col">
         <div className="max-w-[650px]">
           {data.headline && (
@@ -31,7 +31,7 @@ function Hero({ data }: Props) {
             ))}
         </div>
 
-        <div className="absolute bottom-0 w-full flex justify-center items-end pb-4">
+        <div className="sm:hidden absolute bottom-0 mb-24 w-full flex justify-center items-end pb-4">
           <BsChevronDoubleDown className="animate-bounce" />
         </div>
       </div>

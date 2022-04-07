@@ -10,9 +10,10 @@ interface Props {
 function Author({ post }: Props) {
   return (
     <div className="flex items-center mt-6">
-      <div className="w-[60px] h-[60px] rounded-full overflow-clip mr-4">
+      <div className="w-[60px] h-[60px]  mr-4">
         {post.author.image && (
           <Image
+            className="rounded-full overflow-clip"
             width={540}
             height={540}
             alt={`Cover Image for ${post.author.name}`}

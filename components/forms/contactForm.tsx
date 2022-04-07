@@ -1,9 +1,12 @@
 function ContactForm() {
   return (
-    <div className="w-full py-10 max-w-primary-col">
-      <div className="max-w-[800px] mx-auto">
+    <div className="flex justify-center w-full py-10 max-w-primary-col">
+      <div className="w-full max-w-[800px] mx-auto">
         <div>
           <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4">
+            <div className="hidden">
+              <input type="text" id="validator" />
+            </div>
             <div>
               <label htmlFor="name" className="form-label">
                 Your name
@@ -33,7 +36,7 @@ function ContactForm() {
               <textarea
                 id="email"
                 name="email"
-                placeholder="Tell me about the technology chalanges in your machine shop.  How can I help?"
+                placeholder="How can I help?"
                 className="form-input"
               />
             </div>
