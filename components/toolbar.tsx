@@ -4,6 +4,7 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import Logo from './logo';
 import React from 'react';
 import NavMenu from './navMenu';
+import Link from 'next/link';
 
 interface Props {
   navItems: NavItemGroq[];
@@ -17,8 +18,17 @@ export default function Toolbar({ navItems, brandName }: Props) {
   return (
     <div className="fixed flex justify-center z-50 top-0 left-0 w-full h-[60px] bg-neutral-900 bg-opacity-60 backdrop-blur-sm border-b border-white border-opacity-10">
       <div className="flex w-full items-center max-w-primary-col p-4 ">
-        <Logo width={40} height={40} fill="#fff" />
-        <div className="text-xl ml-3">{brandName}</div>
+        <Link href={'/'}>
+          <div className="flex justify-center items-center cursor-pointer">
+            <Logo
+              width={40}
+              height={40}
+              fill="#fff"
+              className="hover:animate-spin-slow"
+            />
+            <div className="text-xl ml-3">{brandName}</div>
+          </div>
+        </Link>
         <div className="grow"></div>
         <button
           className="h-[40px] w-[40px] flex flex-col items-center justify-center text-2xl cursor-pointer sm:hidden"
