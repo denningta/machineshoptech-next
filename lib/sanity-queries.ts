@@ -23,6 +23,22 @@ import { CtaSection } from '../interfaces/sanity-schema';
 
 import groq from 'groq';
 
+export interface SanityScheduleMetadata {
+  _createdAt: string;
+  _id: string;
+  _rev: string;
+  _type: string;
+  datetime: string;
+  documentId: string;
+  rev: string;
+  scheduledAt: string;
+  user: {
+    displayName: string;
+    id: string;
+    imageUrl: string;
+  };
+}
+
 export const siteSettingsQuery = groq`*[_type == 'siteSettings'][0]`;
 export type SiteSettingsGroq = SiteSettings;
 
