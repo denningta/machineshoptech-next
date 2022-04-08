@@ -21,11 +21,11 @@ const query = groq`
   *[_type == "schedule.metadata" && !(_id in path("drafts.**")) && datetime <= now()]
 `;
 
-export default function handler(
+export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse<ResponseData>
 ) {
-  client.fetch(query).then((res) => {
+  await client.fetch(query).then((res) => {
     console.log(res);
     return Promise.all(
       res.map((metadata: SanityScheduleMetadata) => publish(metadata, client))
