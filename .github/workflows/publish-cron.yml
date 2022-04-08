@@ -6,4 +6,9 @@ jobs:
   cron:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '🎉 The CRON job was automatically triggered'
+      - name: Call our API route
+        run: "🎉 The CRON job was automatically triggered"
+        # run: |
+        #   curl --request POST \
+        #   --url 'https://yoursite.com/api/cron' \
+        #   --header 'Authorization: Bearer ${{ secrets.API_SECRET_KEY }}'
