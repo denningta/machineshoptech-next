@@ -6,4 +6,4 @@ jobs:
   cron:
     runs-on: ubuntu-latest
     steps:
-      run: echo '🎉 The CRON job was automatically triggered'
+      - run: echo '🎉 The CRON job was automatically triggered'
