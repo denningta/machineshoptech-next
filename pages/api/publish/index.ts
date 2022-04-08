@@ -1,7 +1,7 @@
 import sanityClient, { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { SanityScheduleMetadata } from '../../../lib/sanity-queries';
+import { PostGroq, SanityScheduleMetadata } from '../../../lib/sanity-queries';
 import axios from 'axios';
 
 const client = sanityClient({
@@ -73,5 +73,20 @@ const publish = async (
     .delete(`drafts.${id}`)
     .delete(metadata._id)
     .commit()
-    .then((res) => console.log(JSON.stringify(res) + ' Success'));
+    .then((res) => {
+      console.log(JSON.stringify(res) + ' Success');
+      discordWebhook(revision, metadata);
+    });
+};
+
+const discordWebhook = (post: PostGroq, metadata: SanityScheduleMetadata) => {
+  axios.post(
+    'https://discord.com/api/webhooks/961931044599242784/ej91gp71MRg8krpxsEbbb-qP1FQ2kXsO8CI-pG2U_7f25o7xGNQTbKgJeRToUrg-7lrZ',
+    {
+      content: `**${post.title}** was successfully published.\nScheduled by ${metadata.user.displayName}`,
+    },
+    {
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 };
