@@ -1,0 +1,9 @@
+name: 15-minute-cron
+on:
+  schedule:
+    - cron: "* * * * *"
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      run: echo '🎉 The CRON job was automatically triggered'
