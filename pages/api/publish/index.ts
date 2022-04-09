@@ -28,12 +28,15 @@ export default async function handler(
   console.log('yolo');
   console.log('sanity token: ', process.env.SANITY_WRITE_TOKEN);
 
-  await client.fetch(query).then((res) => {
-    console.log('sanityClient res: ', res);
-    return Promise.all(
-      res.map((metadata: SanityScheduleMetadata) => publish(metadata, client))
-    );
-  });
+  await client
+    .fetch(query)
+    .then((res) => {
+      console.log('sanityClient res: ', res);
+      return Promise.all(
+        res.map((metadata: SanityScheduleMetadata) => publish(metadata, client))
+      );
+    })
+    .catch((error) => console.log(error));
 
   response.status(200).json({ message: 'success' });
 }
