@@ -26,8 +26,8 @@ export default async function handler(
   response: NextApiResponse<ResponseData>
 ) {
   console.log('yolo');
-  console.log(request);
   await client.fetch(query).then((res) => {
+    console.log('yolo after client fetch');
     return Promise.all(
       res.map((metadata: SanityScheduleMetadata) => publish(metadata, client))
     );
