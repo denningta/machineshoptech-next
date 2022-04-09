@@ -25,20 +25,35 @@ export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse<ResponseData>
 ) {
-  console.log('yolo');
-  console.log('sanity token: ', process.env.SANITY_WRITE_TOKEN);
-
   await client
     .fetch(query)
     .then((res) => {
       console.log('sanityClient res: ', res);
+      if (!res.length) {
+        console.log('No scehduled drafts found.');
+        response.status(200).json({ message: 'No scheduled drafts found.' });
+        return;
+      }
       return Promise.all(
         res.map((metadata: SanityScheduleMetadata) => publish(metadata, client))
-      );
+      )
+        .then(async (res) => {
+          console.log(res);
+          response.status(200).json({ message: 'Publish success' });
+        })
+        .catch((res) => {
+          console.log(res);
+          response.status(500).json({
+            message: 'An error occured publishing the document to Sanity',
+          });
+        });
     })
-    .catch((error) => console.log(error));
-
-  response.status(200).json({ message: 'success' });
+    .catch((error) => {
+      console.log(error);
+      response
+        .status(500)
+        .json({ message: 'An error occured with the Sanity client query' });
+    });
 }
 
 const publish = async (
@@ -52,7 +67,7 @@ const publish = async (
   const id = metadata.documentId;
   const rev = metadata.rev;
 
-  // Fetch the draft revision we should publish from the History API
+  // Fetch the draft revision we should publish from the Sanity History API
   const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/history/${dataset}/documents/drafts.${id}?revision=${rev}`;
 
   const revision = await axios
@@ -70,7 +85,7 @@ const publish = async (
   }
 
   // Publish it
-  return client
+  return await client
     .transaction()
     .createOrReplace(Object.assign({}, revision, { _id: id }))
     .delete(`drafts.${id}`)
@@ -78,12 +93,15 @@ const publish = async (
     .commit()
     .then((res) => {
       console.log(JSON.stringify(res) + ' Success');
-      discordWebhook(revision, metadata);
+      return res;
     });
 };
 
-const discordWebhook = (post: PostGroq, metadata: SanityScheduleMetadata) => {
-  axios.post(
+const discordWebhook = async (
+  post: PostGroq,
+  metadata: SanityScheduleMetadata
+) => {
+  return await axios.post(
     'https://discord.com/api/webhooks/961931044599242784/ej91gp71MRg8krpxsEbbb-qP1FQ2kXsO8CI-pG2U_7f25o7xGNQTbKgJeRToUrg-7lrZ',
     {
       content: `**${post.title}** was successfully published.\nScheduled by ${metadata.user.displayName}`,
