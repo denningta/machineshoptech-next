@@ -1,7 +1,7 @@
 import sanityClient, { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { PostGroq, SanityScheduleMetadata } from '../../../lib/sanity-queries';
+import { SanityScheduleMetadata } from '../../../lib/sanity-queries';
 import axios from 'axios';
 
 const client = sanityClient({
