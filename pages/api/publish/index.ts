@@ -28,10 +28,13 @@ export default async function handler(
   console.log('yolo');
   await client.fetch(query).then((res) => {
     console.log('yolo after client fetch');
+    console.log('sanityClient res: ', res);
     return Promise.all(
       res.map((metadata: SanityScheduleMetadata) => publish(metadata, client))
     );
   });
+
+  console.log('handler res triggered');
   response.status(200).json({ message: 'success' });
 }
 
