@@ -97,17 +97,17 @@ const publish = async (
     });
 };
 
-const discordWebhook = async (
-  post: PostGroq,
-  metadata: SanityScheduleMetadata
-) => {
-  return await axios.post(
-    'https://discord.com/api/webhooks/961931044599242784/ej91gp71MRg8krpxsEbbb-qP1FQ2kXsO8CI-pG2U_7f25o7xGNQTbKgJeRToUrg-7lrZ',
-    {
-      content: `**${post.title}** was successfully published.\nScheduled by ${metadata.user.displayName}`,
-    },
-    {
-      headers: { 'Content-Type': 'application/json' },
-    }
-  );
-};
+// const discordWebhook = async (
+//   post: PostGroq,
+//   metadata: SanityScheduleMetadata
+// ) => {
+//   return await axios.post(
+//     'https://discord.com/api/webhooks/961931044599242784/ej91gp71MRg8krpxsEbbb-qP1FQ2kXsO8CI-pG2U_7f25o7xGNQTbKgJeRToUrg-7lrZ',
+//     {
+//       content: `**${post.title}** was successfully published.\nScheduled by ${metadata.user.displayName}`,
+//     },
+//     {
+//       headers: { 'Content-Type': 'application/json' },
+//     }
+//   );
+// };
