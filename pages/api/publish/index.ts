@@ -25,8 +25,8 @@ export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse<ResponseData>
 ) {
+  console.log('yolo');
   await client.fetch(query).then((res) => {
-    console.log(res);
     return Promise.all(
       res.map((metadata: SanityScheduleMetadata) => publish(metadata, client))
     );
@@ -47,7 +47,6 @@ const publish = async (
 
   // Fetch the draft revision we should publish from the History API
   const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/history/${dataset}/documents/drafts.${id}?revision=${rev}`;
-  console.log(url);
 
   const revision = await axios
     .get(url, {
@@ -55,7 +54,6 @@ const publish = async (
     })
     .then((response) => response.data && response.data.documents[0]);
 
-  console.log(revision);
   if (!revision) {
     // Here we have a situation where the scheduled revision does not exist
     // This can happen if the document was deleted via Studio or API without
@@ -63,8 +61,6 @@ const publish = async (
     console.error('Could not find document revision to publish', metadata);
     return;
   }
-
-  console.log('Object.assign: ', Object.assign({}, revision, { _id: id }));
 
   // Publish it
   return client
