@@ -26,15 +26,15 @@ export default async function handler(
   response: NextApiResponse<ResponseData>
 ) {
   console.log('yolo');
+  console.log('sanity token: ', process.env.SANITY_WRITE_TOKEN);
+
   await client.fetch(query).then((res) => {
-    console.log('yolo after client fetch');
     console.log('sanityClient res: ', res);
     return Promise.all(
       res.map((metadata: SanityScheduleMetadata) => publish(metadata, client))
     );
   });
 
-  console.log('handler res triggered');
   response.status(200).json({ message: 'success' });
 }
 
