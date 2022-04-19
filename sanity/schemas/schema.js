@@ -32,6 +32,7 @@ import postList from './documents/sections/post-list';
 import testimonialSection from './documents/sections/testimonial-section';
 import genericHeader from './documents/sections/generic-header';
 import form from './documents/sections/form';
+import series from './documents/series';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -63,6 +64,7 @@ export default createSchema({
     testimonialSection,
     genericHeader,
     form,
+    series,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

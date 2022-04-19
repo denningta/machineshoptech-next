@@ -7,6 +7,7 @@ import { GrArticle } from 'react-icons/gr';
 import { FaUserAstronaut } from 'react-icons/fa';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { RiDraftLine } from 'react-icons/ri'
+import { MdFormatListNumbered } from 'react-icons/md';
 
 export default S.listItem().title('Blog').icon(FaBloggerB)
 .child(
@@ -30,6 +31,10 @@ export default S.listItem().title('Blog').icon(FaBloggerB)
               S.document().documentId(documentId).schemaType('post')
                 .views(postViews)
             )
+        ),
+      S.listItem().title('Post Series').icon(MdFormatListNumbered)
+        .child(
+          S.documentTypeList('series').title('Post Series')
         ),
       S.listItem().title('Posts By Author').icon(FaUserAstronaut)
         .child(
