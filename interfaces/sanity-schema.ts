@@ -1016,6 +1016,29 @@ export interface Form extends SanityDocument {
   type?: 'contact' | 'newsletter';
 }
 
+/**
+ * Series
+ *
+ *
+ */
+export interface Series extends SanityDocument {
+  _type: 'series';
+
+  /**
+   * Series Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Posts in Series — `array`
+   *
+   * List posts in order
+   */
+  posts?: Array<SanityKeyedReference<Post>>;
+}
+
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
@@ -1052,7 +1075,8 @@ export type Documents =
   | PostList
   | TestimonialSection
   | GenericHeader
-  | Form;
+  | Form
+  | Series;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but

@@ -15,6 +15,7 @@ import {
   Post,
   PostList,
   SanityImageAsset,
+  Series,
   SiteSettings,
   SocialConnection,
 } from '../interfaces/sanity-schema';
@@ -255,7 +256,14 @@ export const postQuery = groq`
         }
       }
     },
-    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+    "series": *[_type == 'series' && references(^._id)]{
+      ...,
+      posts[]->{
+        title,
+        slug
+      }
+    }[0]
   }[0]
 `;
 
@@ -267,4 +275,13 @@ export type PostGroq = Omit<
   categories: Category[];
   footerSections: SectionGroq[];
   estimatedReadingTime: number;
+  series: Omit<Series, 'posts'> & {
+    posts: {
+      title: string;
+      slug: {
+        _type: string;
+        current: string;
+      };
+    }[];
+  };
 };
