@@ -43,7 +43,7 @@ function FeatureSummary({ data }: Props) {
               width={540}
               height={340}
               alt={`Cover Image for ${data.headline}`}
-              src={imageBuilder(data.image).width(540).height(340).url()}
+              src={imageBuilder(data.image).width(1080).height(680).url()}
             />
           </div>
         )}

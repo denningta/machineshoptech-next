@@ -8,6 +8,7 @@ import {
   Footer,
   Form,
   GenericHeader,
+  Introduction,
   LandingPage,
   LogoCloud,
   Metrics,
@@ -192,7 +193,8 @@ export type SectionGroq =
   | LogoCloudGroq
   | MetricsGroq
   | PostListSectionGroq
-  | FormGroq;
+  | FormGroq
+  | Introduction;
 
 export const postListPathsQuery = groq`
   *[_type == 'postList'] { "slug": slug.current }

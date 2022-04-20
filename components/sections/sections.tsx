@@ -7,6 +7,7 @@ import LogoCloud from './logoCloud';
 import Metrics from './metrics';
 import PostListSection from '../blog/postList';
 import ContactForm from '../forms/contactForm';
+import Introduction from './introduction';
 
 interface Props {
   sections: SectionGroq[];
@@ -64,6 +65,12 @@ function Sections({ sections, postList }: Props) {
         return (
           <div key={section._id}>
             <ContactForm />
+          </div>
+        );
+      case 'introduction':
+        return (
+          <div key={section._id}>
+            <Introduction data={section} />
           </div>
         );
     }

@@ -93,7 +93,7 @@ export interface LandingPage extends SanityDocument {
    *
    * Select the header to display at the top of this page
    */
-  header?: SanityReference<Hero | CtaSection | GenericHeader>;
+  header?: SanityReference<Hero | CtaSection | GenericHeader | Introduction>;
 
   /**
    * Sections — `array`
@@ -110,6 +110,7 @@ export interface LandingPage extends SanityDocument {
       | CtaSection
       | PostList
       | Form
+      | Introduction
     >
   >;
 
@@ -1039,6 +1040,55 @@ export interface Series extends SanityDocument {
   posts?: Array<SanityKeyedReference<Post>>;
 }
 
+/**
+ * Introduction
+ *
+ *
+ */
+export interface Introduction extends SanityDocument {
+  _type: 'introduction';
+
+  /**
+   * Internal Title — `string`
+   *
+   *
+   */
+  internalTitle?: string;
+
+  /**
+   * Introduction Image — `image`
+   *
+   *
+   */
+  image?: {
+    _type: 'image';
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Introduction Tagline — `string`
+   *
+   * A short introduction.  Ex: Hi, I'm Tim
+   */
+  tagline?: string;
+
+  /**
+   * Headline — `string`
+   *
+   * A short headline describing what you do.  Ex: I make websites.
+   */
+  headline?: string;
+
+  /**
+   * Introduction Text — `simplePortableText`
+   *
+   *
+   */
+  introduction?: SimplePortableText;
+}
+
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
@@ -1076,7 +1126,8 @@ export type Documents =
   | TestimonialSection
   | GenericHeader
   | Form
-  | Series;
+  | Series
+  | Introduction;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but

@@ -33,6 +33,7 @@ export default {
         {type: 'hero'},
         {type: 'ctaSection'},
         {type: 'genericHeader'},
+        {type: 'introduction'},
       ]
     },
     {
@@ -51,6 +52,7 @@ export default {
           {type: 'ctaSection'},
           {type: 'postList'},
           {type: 'form'},
+          {type: 'introduction'},
         ]
       }]
     },

@@ -29,6 +29,8 @@ const hiddenDocTypes = listItem => ![
     'testimonialSection',
     'genericHeader',
     'form',
+    'series',
+    'introduction',
   ].includes(listItem.getId())
 
 export default () =>
