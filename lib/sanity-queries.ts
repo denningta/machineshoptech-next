@@ -246,6 +246,13 @@ export type PostListGroq = PostCardGroq[];
 export const postQuery = groq`
   *[_type == 'post' && slug.current == $slug]{
     ...,
+    body[]{
+      ...,
+      _type == "image" => {
+        ...,
+        asset->
+      }
+    },
     author->,
     categories[]->,
     footerSections[]->{

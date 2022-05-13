@@ -1,4 +1,3 @@
-import { Author } from '../../interfaces/sanity-schema';
 import { imageBuilder } from '../../lib/sanity-client';
 import Image from 'next/image';
 import { PostCardGroq, PostGroq } from '../../lib/sanity-queries';
@@ -7,7 +6,7 @@ interface Props {
   post: PostGroq | PostCardGroq;
 }
 
-function Author({ post }: Props) {
+function AuthorComponent({ post }: Props) {
   return (
     <div className="flex items-center mt-6">
       <div className="w-[60px] h-[60px]  mr-4">
@@ -40,4 +39,4 @@ function Author({ post }: Props) {
   );
 }
 
-export default Author;
+export default AuthorComponent;

@@ -4,7 +4,11 @@ import client from '../../lib/sanity-client';
 import Image from 'next/image';
 
 interface Props {
-  value: SanityImageAsset;
+  value: {
+    asset: SanityImageAsset;
+    _key: string;
+    _type: string;
+  };
   width?: number;
   height?: number;
   aspectRatio?: string[] | number[];
@@ -18,15 +22,16 @@ const InlineImage = ({
 }: Props) => {
   height = width / (+aspectRatio[0] / +aspectRatio[1]);
 
+  console.log(value.asset.metadata);
+
+  width = value.asset.metadata.dimensions.width;
+  height = value.asset.metadata.dimensions.height;
+
   return (
     <Image
-      src={urlBuilder(client)
-        .image(value)
-        .width(width)
-        .height(height)
-        .fit('max')
-        .auto('format')
-        .url()}
+      src={urlBuilder(client).image(value).width(width).height(height).url()}
+      layout={'intrinsic'}
+      sizes={'50vw'}
       width={width}
       height={height}
       alt={'Alternate image text' || ' '}

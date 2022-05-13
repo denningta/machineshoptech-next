@@ -8,7 +8,6 @@ import {
 import Sections from '../sections/sections';
 import Author from './author';
 import InlineImage from './inlineImage';
-import { json } from 'stream/consumers';
 
 interface Props {
   post: PostGroq;
