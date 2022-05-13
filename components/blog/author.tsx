@@ -8,7 +8,7 @@ interface Props {
 
 function AuthorComponent({ post }: Props) {
   return (
-    <div className="flex items-center mt-6">
+    <div className="flex items-center mt-6 text-sm">
       <div className="w-[60px] h-[60px]  mr-4">
         {post.author.image && (
           <Image

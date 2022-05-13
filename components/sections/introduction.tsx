@@ -11,7 +11,7 @@ function Introduction({ data }: Props) {
   return (
     <div className="flex justify-center px-4 border-b border-neutral-800 bg-neutral-800">
       <div className="flex flex-col items-center max-w-primary-col my-10">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 content-center">
           <div className="flex flex-col items-center">
             <div className="mt-6 text-3xl font-extrabold">{data.tagline}</div>
             <div className="mt-6 text-xl">{data.headline}</div>
@@ -27,7 +27,7 @@ function Introduction({ data }: Props) {
               )}
             </div>
           </div>
-          <div className="mt-5 leading-8 portable-text">
+          <div className="my-5 leading-8 portable-text">
             {data.introduction && <PortableText value={data.introduction} />}
           </div>
         </div>
